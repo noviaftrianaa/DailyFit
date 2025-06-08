@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>DailyFit - Health & Fitness Tracker</title>
 <style>
   :root {
@@ -23,251 +23,230 @@
   body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: 
-      linear-gradient(rgba(33, 150, 243, 0.6), rgba(33, 150, 243, 0.6)),
-      url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
+    background: url('https://images.unsplash.com/photo-1571019613914-85f342c85df3?auto=format&fit=crop&w=1400&q=80') no-repeat center center fixed;
     background-size: cover;
-    color: var(--color-light);
-    min-height: 100vh;
+    color: var(--color-text);
   }
 
   header {
-    background-color: rgba(21, 101, 192, 0.85);
+    background-color: rgba(33, 150, 243, 0.85);
     color: var(--color-light);
     padding: 1rem 2rem;
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 700;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+    backdrop-filter: blur(6px);
   }
 
   main {
-    max-width: 600px;
-    margin: 2rem auto 4rem;
-    padding: 1rem 1.5rem;
-    background-color: rgba(255, 255, 255, 0.15);
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    backdrop-filter: blur(10px);
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
   }
 
   h2 {
-    color: var(--color-light);
+    color: var(--color-primary);
     margin-bottom: 1rem;
     text-align: center;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   }
 
   .section {
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.95);
     border-radius: 12px;
     padding: 1.5rem;
     margin-bottom: 2rem;
-    box-shadow: 0 4px 15px rgba(33, 150, 243, 0.4);
-    backdrop-filter: blur(5px);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  .section:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(33, 150, 243, 0.7);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px);
   }
 
   label {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 600;
-    color: var(--color-light);
-    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
   }
 
   input[type="number"],
   input[type="text"] {
     width: 100%;
-    padding: 0.6rem;
+    padding: 0.5rem;
     font-size: 1rem;
     margin-bottom: 1rem;
-    border: none;
-    border-radius: 8px;
-    background-color: rgba(255, 255, 255, 0.85);
-    color: var(--color-primary);
-    font-weight: 600;
-    box-shadow: inset 1px 1px 5px rgba(0,0,0,0.1);
-    transition: box-shadow 0.3s ease;
-  }
-  input[type="number"]:focus,
-  input[type="text"]:focus {
-    outline: none;
-    box-shadow: 0 0 8px var(--color-primary);
+    border: 1px solid #bbb;
+    border-radius: 5px;
   }
 
   button {
-    background: linear-gradient(45deg, #2196f3, #1565c0);
+    background-color: var(--color-primary);
     color: var(--color-light);
     border: none;
-    padding: 0.8rem 1.4rem;
-    font-size: 1.1rem;
-    border-radius: 10px;
+    padding: 0.7rem 1.2rem;
+    font-size: 1rem;
+    border-radius: 5px;
     cursor: pointer;
-    font-weight: 700;
+    transition: background-color 0.3s ease;
+    font-weight: 600;
     width: 100%;
-    box-shadow: 0 4px 15px rgba(21, 101, 192, 0.7);
-    transition: background 0.3s ease, transform 0.2s ease;
+    margin-top: 0.5rem;
   }
+
   button:hover {
-    background: linear-gradient(45deg, #1565c0, #2196f3);
-    transform: scale(1.05);
-  }
-  button:active {
-    transform: scale(0.95);
+    background-color: var(--color-secondary);
   }
 
   .result {
     margin-top: 1rem;
     font-weight: 700;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     text-align: center;
-    animation: fadeIn 0.6s ease forwards;
-    color: var(--color-light);
-    text-shadow: 0 1px 3px rgba(0,0,0,0.7);
   }
 
-  /* Footer */
+  .tips {
+    font-style: italic;
+    font-size: 0.95rem;
+    margin-top: 1rem;
+    color: #444;
+  }
+
+  .class-signup {
+    text-align: center;
+  }
+
+  .class-signup h3 {
+    margin-bottom: 1rem;
+    color: var(--color-secondary);
+  }
+
+  .class-signup ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .class-signup li {
+    background-color: rgba(255, 255, 255, 0.9);
+    margin: 0.5rem 0;
+    padding: 0.7rem;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   footer {
     text-align: center;
     padding: 1rem;
     font-size: 0.9rem;
-    color: var(--color-light);
-    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    color: #fff;
+    background-color: rgba(33, 150, 243, 0.8);
+    backdrop-filter: blur(3px);
+    margin-top: 2rem;
   }
 
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
+  @media (max-width: 600px) {
+    main {
+      padding: 0 0.5rem;
     }
-    to {
-      opacity: 1;
-      transform: translateY(0);
+
+    button {
+      font-size: 0.9rem;
     }
   }
-
 </style>
-
 </head>
 <body>
 
 <header>DailyFit</header>
 
 <main>
-
-  <section class="section" id="bmi-section" aria-label="Body Mass Index Calculator">
-    <h2>Body Mass Index (BMI) Calculator</h2>
+  <section class="section" id="bmi-section">
+    <h2>Body Mass Index (BMI)</h2>
     <label for="weight">Weight (kg):</label>
-    <input type="number" id="weight" min="1" placeholder="e.g., 70" aria-describedby="weightHelp" />
+    <input type="number" id="weight" min="1" />
     <label for="height">Height (cm):</label>
-    <input type="number" id="height" min="1" placeholder="e.g., 170" aria-describedby="heightHelp" />
-    <button onclick="calculateBMI()" aria-label="Calculate BMI">Calculate BMI</button>
-    <div class="result" id="bmi-result" role="alert" aria-live="polite"></div>
-    <!-- Ilustrasi SVG -->
-    <svg viewBox="0 0 64 64" fill="none" aria-hidden="true" >
-      <circle cx="32" cy="32" r="30" stroke="var(--color-primary)" stroke-width="3"/>
-      <path d="M20 44l12-24 12 24H20z" fill="var(--color-primary)" fill-opacity="0.2"/>
-    </svg>
+    <input type="number" id="height" min="1" />
+    <button onclick="calculateBMI()">Calculate BMI</button>
+    <div class="result" id="bmi-result"></div>
+    <div class="tips">Maintain a balanced diet and regular exercise for a healthy BMI.</div>
   </section>
 
-  <section class="section" id="water-section" aria-label="Daily Water Intake Recommendation">
-    <h2>Daily Water Intake Recommendation</h2>
+  <section class="section" id="water-section">
+    <h2>Daily Water Intake</h2>
     <label for="weight-water">Weight (kg):</label>
-    <input type="number" id="weight-water" min="1" placeholder="e.g., 70" aria-describedby="waterWeightHelp" />
-    <button onclick="calculateWaterIntake()" aria-label="Calculate Water Intake">Calculate Water Intake</button>
-    <div class="result" id="water-result" role="alert" aria-live="polite"></div>
-    <!-- Ilustrasi SVG -->
-    <svg viewBox="0 0 64 64" fill="none" aria-hidden="true" >
-      <path d="M32 2C20 20 16 40 32 62c16-22 12-42 0-60z" fill="var(--color-primary)" fill-opacity="0.15"/>
-      <circle cx="32" cy="32" r="14" stroke="var(--color-primary)" stroke-width="3" />
-    </svg>
+    <input type="number" id="weight-water" min="1" />
+    <button onclick="calculateWaterIntake()">Calculate Water</button>
+    <div class="result" id="water-result"></div>
+    <div class="tips">Drink water consistently throughout the day.</div>
   </section>
 
-  <section class="section" id="steps-section" aria-label="Step Tracker Goal">
-    <h2>Step Tracker Goal</h2>
-    <label for="steps">Enter Your Steps Today:</label>
-    <input type="number" id="steps" min="0" placeholder="e.g., 5000" aria-describedby="stepsHelp" />
-    <button onclick="checkStepsGoal()" aria-label="Check Steps Goal">Check Goal</button>
-    <div class="result" id="steps-result" role="alert" aria-live="polite"></div>
-    <!-- Ilustrasi SVG -->
-    <svg viewBox="0 0 64 64" fill="none" aria-hidden="true" >
-      <circle cx="32" cy="32" r="30" stroke="var(--color-primary)" stroke-width="3"/>
-      <path d="M22 38h20M28 44h8" stroke="var(--color-primary)" stroke-width="3" stroke-linecap="round"/>
-    </svg>
+  <section class="section" id="steps-section">
+    <h2>Steps Tracker</h2>
+    <label for="steps">Steps Today:</label>
+    <input type="number" id="steps" min="0" />
+    <button onclick="checkStepsGoal()">Check Goal</button>
+    <div class="result" id="steps-result"></div>
+    <div class="tips">Try walking at least 10,000 steps a day to stay active.</div>
   </section>
 
+  <section class="section class-signup">
+    <h3>Join a Fitness Class</h3>
+    <ul>
+      <li>Yoga <button onclick="alert('Registered for Yoga Class!')">Join</button></li>
+      <li>Pilates <button onclick="alert('Registered for Pilates Class!')">Join</button></li>
+      <li>Zumba <button onclick="alert('Registered for Zumba Class!')">Join</button></li>
+      <li>Gym Training <button onclick="alert('Registered for Gym Training!')">Join</button></li>
+    </ul>
+  </section>
 </main>
 
 <footer>
-  &copy; 2025 DailyFit. All rights reserved.
+  &copy; 2025 DailyFit. Stay fit, stay healthy.
 </footer>
 
 <script>
   function calculateBMI() {
     const weight = parseFloat(document.getElementById('weight').value);
     const heightCm = parseFloat(document.getElementById('height').value);
-    const resultEl = document.getElementById('bmi-result');
-
     if (!weight || !heightCm || weight <= 0 || heightCm <= 0) {
-      resultEl.textContent = 'Please enter valid weight and height.';
-      resultEl.classList.add('error');
+      document.getElementById('bmi-result').textContent = 'Please enter valid weight and height.';
+      document.getElementById('bmi-result').style.color = 'var(--color-error)';
       return;
     }
-
     const heightM = heightCm / 100;
     const bmi = weight / (heightM * heightM);
     let category = '';
-
     if (bmi < 18.5) category = 'Underweight';
-    else if (bmi < 24.9) category = 'Normal weight';
+    else if (bmi < 24.9) category = 'Normal';
     else if (bmi < 29.9) category = 'Overweight';
     else category = 'Obese';
-
-    resultEl.textContent = `Your BMI is ${bmi.toFixed(1)} (${category}).`;
-    resultEl.classList.remove('error');
+    document.getElementById('bmi-result').textContent = `Your BMI is ${bmi.toFixed(1)} (${category})`;
+    document.getElementById('bmi-result').style.color = 'var(--color-primary)';
   }
 
   function calculateWaterIntake() {
     const weight = parseFloat(document.getElementById('weight-water').value);
-    const resultEl = document.getElementById('water-result');
-
     if (!weight || weight <= 0) {
-      resultEl.textContent = 'Please enter valid weight.';
-      resultEl.classList.add('error');
+      document.getElementById('water-result').textContent = 'Please enter valid weight.';
+      document.getElementById('water-result').style.color = 'var(--color-error)';
       return;
     }
-
-    const waterMl = weight * 35;
-    const waterL = waterMl / 1000;
-
-    resultEl.textContent = `You should drink about ${waterL.toFixed(2)} liters of water daily.`;
-    resultEl.classList.remove('error');
+    const waterL = (weight * 35) / 1000;
+    document.getElementById('water-result').textContent = `Recommended: ${waterL.toFixed(2)} liters/day`;
+    document.getElementById('water-result').style.color = 'var(--color-primary)';
   }
 
   function checkStepsGoal() {
     const steps = parseInt(document.getElementById('steps').value);
-    const resultEl = document.getElementById('steps-result');
-
     if (isNaN(steps) || steps < 0) {
-      resultEl.textContent = 'Please enter a valid number of steps.';
-      resultEl.classList.add('error');
+      document.getElementById('steps-result').textContent = 'Please enter valid steps.';
+      document.getElementById('steps-result').style.color = 'var(--color-error)';
       return;
     }
-
     const goal = 10000;
-
     if (steps >= goal) {
-      resultEl.textContent = `Great job! You've reached your daily goal of ${goal} steps. 🎉`;
-      resultEl.classList.remove('error');
+      document.getElementById('steps-result').textContent = `Great job! You've reached your goal 🎉`;
+      document.getElementById('steps-result').style.color = 'var(--color-primary)';
     } else {
-      const remaining = goal - steps;
-      resultEl.textContent = `You need ${remaining} more steps to reach your daily goal of ${goal}. Keep going!`;
-      resultEl.classList.remove('error');
+      document.getElementById('steps-result').textContent = `You need ${goal - steps} more steps today.`;
+      document.getElementById('steps-result').style.color = 'var(--color-secondary)';
     }
   }
 </script>
