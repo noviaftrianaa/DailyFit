@@ -1,255 +1,261 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>DailyFit - Health & Fitness Tracker</title>
-<style>
-  :root {
-    --color-primary: #2196f3;
-    --color-secondary: #1565c0;
-    --color-error: #e53935;
-    --color-bg: #f0f4ff;
-    --color-text: #0d1a26;
-    --color-light: #ffffff;
-    --color-dark-bg: #0b1724;
-    --color-dark-text: #cfd8fc;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DailyFit - Health & Fitness Tracker</title>
+  <style>
+    :root {
+      --primary: #5e35b1;
+      --secondary: #d1c4e9;
+      --accent: #8e24aa;
+      --bg: #f3e5f5;
+      --text: #2c2c2c;
+      --white: #fff;
+    }
 
-  * {
-    box-sizing: border-box;
-  }
+    * {
+      box-sizing: border-box;
+    }
 
-  body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: url('https://images.unsplash.com/photo-1571019613914-85f342c85df3?auto=format&fit=crop&w=1400&q=80') no-repeat center center fixed;
-    background-size: cover;
-    color: var(--color-text);
-  }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://images.unsplash.com/photo-1594737625785-c0043100b2c0?auto=format&fit=crop&w=1400&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: var(--text);
+    }
 
-  header {
-    background-color: rgba(33, 150, 243, 0.85);
-    color: var(--color-light);
-    padding: 1rem 2rem;
-    text-align: center;
-    font-size: 1.8rem;
-    font-weight: 700;
-    backdrop-filter: blur(6px);
-  }
+    header {
+      background-color: rgba(94, 53, 177, 0.9);
+      color: var(--white);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      backdrop-filter: blur(6px);
+    }
 
-  main {
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-  }
-
-  h2 {
-    color: var(--color-primary);
-    margin-bottom: 1rem;
-    text-align: center;
-  }
-
-  .section {
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 12px;
-    padding: 1.5rem;
-    margin-bottom: 2rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(4px);
-  }
-
-  label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-  }
-
-  input[type="number"],
-  input[type="text"] {
-    width: 100%;
-    padding: 0.5rem;
-    font-size: 1rem;
-    margin-bottom: 1rem;
-    border: 1px solid #bbb;
-    border-radius: 5px;
-  }
-
-  button {
-    background-color: var(--color-primary);
-    color: var(--color-light);
-    border: none;
-    padding: 0.7rem 1.2rem;
-    font-size: 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-weight: 600;
-    width: 100%;
-    margin-top: 0.5rem;
-  }
-
-  button:hover {
-    background-color: var(--color-secondary);
-  }
-
-  .result {
-    margin-top: 1rem;
-    font-weight: 700;
-    font-size: 1.2rem;
-    text-align: center;
-  }
-
-  .tips {
-    font-style: italic;
-    font-size: 0.95rem;
-    margin-top: 1rem;
-    color: #444;
-  }
-
-  .class-signup {
-    text-align: center;
-  }
-
-  .class-signup h3 {
-    margin-bottom: 1rem;
-    color: var(--color-secondary);
-  }
-
-  .class-signup ul {
-    list-style: none;
-    padding: 0;
-  }
-
-  .class-signup li {
-    background-color: rgba(255, 255, 255, 0.9);
-    margin: 0.5rem 0;
-    padding: 0.7rem;
-    border-radius: 6px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  footer {
-    text-align: center;
-    padding: 1rem;
-    font-size: 0.9rem;
-    color: #fff;
-    background-color: rgba(33, 150, 243, 0.8);
-    backdrop-filter: blur(3px);
-    margin-top: 2rem;
-  }
-
-  @media (max-width: 600px) {
     main {
-      padding: 0 0.5rem;
+      max-width: 850px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    h2 {
+      color: var(--primary);
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    section {
+      margin-bottom: 2rem;
+    }
+
+    label {
+      display: block;
+      margin: 0.5rem 0 0.3rem;
+      font-weight: 600;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 0.6rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
     }
 
     button {
-      font-size: 0.9rem;
+      background-color: var(--primary);
+      color: var(--white);
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      width: 100%;
     }
-  }
-</style>
+
+    button:hover {
+      background-color: var(--accent);
+    }
+
+    .result {
+      font-weight: bold;
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .tips {
+      font-size: 0.95rem;
+      font-style: italic;
+      color: #555;
+      margin-top: 0.5rem;
+    }
+
+    .class-info {
+      background-color: var(--secondary);
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .class-info h3 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+
+    .signup-form {
+      background-color: #ede7f6;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: rgba(94, 53, 177, 0.9);
+      color: var(--white);
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 600px) {
+      main {
+        padding: 1rem 0.5rem;
+      }
+
+      header {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
+  <header>DailyFit - Stay Fit, Stay Healthy</header>
 
-<header>DailyFit</header>
+  <main>
+    <section>
+      <h2>Body Mass Index (BMI)</h2>
+      <label for="bmi-weight">Weight (kg):</label>
+      <input type="number" id="bmi-weight" />
+      <label for="bmi-height">Height (cm):</label>
+      <input type="number" id="bmi-height" />
+      <button onclick="calculateBMI()">Calculate BMI</button>
+      <div class="result" id="bmi-result"></div>
+      <div class="tips">💡 Keep your BMI in check for long-term health.</div>
+    </section>
 
-<main>
-  <section class="section" id="bmi-section">
-    <h2>Body Mass Index (BMI)</h2>
-    <label for="weight">Weight (kg):</label>
-    <input type="number" id="weight" min="1" />
-    <label for="height">Height (cm):</label>
-    <input type="number" id="height" min="1" />
-    <button onclick="calculateBMI()">Calculate BMI</button>
-    <div class="result" id="bmi-result"></div>
-    <div class="tips">Maintain a balanced diet and regular exercise for a healthy BMI.</div>
-  </section>
+    <section>
+      <h2>Daily Water Intake</h2>
+      <label for="water-weight">Weight (kg):</label>
+      <input type="number" id="water-weight" />
+      <button onclick="calculateWater()">Calculate Water Needs</button>
+      <div class="result" id="water-result"></div>
+      <div class="tips">💧 Staying hydrated improves focus and energy.</div>
+    </section>
 
-  <section class="section" id="water-section">
-    <h2>Daily Water Intake</h2>
-    <label for="weight-water">Weight (kg):</label>
-    <input type="number" id="weight-water" min="1" />
-    <button onclick="calculateWaterIntake()">Calculate Water</button>
-    <div class="result" id="water-result"></div>
-    <div class="tips">Drink water consistently throughout the day.</div>
-  </section>
+    <section>
+      <h2>Step Tracker</h2>
+      <label for="steps">Steps Today:</label>
+      <input type="number" id="steps" />
+      <button onclick="checkSteps()">Check Steps</button>
+      <div class="result" id="steps-result"></div>
+      <div class="tips">🚶‍♂️ 10,000 steps a day keeps fatigue away.</div>
+    </section>
 
-  <section class="section" id="steps-section">
-    <h2>Steps Tracker</h2>
-    <label for="steps">Steps Today:</label>
-    <input type="number" id="steps" min="0" />
-    <button onclick="checkStepsGoal()">Check Goal</button>
-    <div class="result" id="steps-result"></div>
-    <div class="tips">Try walking at least 10,000 steps a day to stay active.</div>
-  </section>
+    <section>
+      <h2>About Our Classes</h2>
+      <div class="class-info">
+        <h3>Why Join DailyFit?</h3>
+        <p>We provide a vibrant community, certified trainers, and flexible schedules to help you achieve your fitness goals. Whether it's stress relief from yoga, energetic Zumba, strength training at the gym, or core control with Pilates — we've got you covered!</p>
+        <p>✨ Your health is an investment, not an expense.</p>
+      </div>
+    </section>
 
-  <section class="section class-signup">
-    <h3>Join a Fitness Class</h3>
-    <ul>
-      <li>Yoga <button onclick="alert('Registered for Yoga Class!')">Join</button></li>
-      <li>Pilates <button onclick="alert('Registered for Pilates Class!')">Join</button></li>
-      <li>Zumba <button onclick="alert('Registered for Zumba Class!')">Join</button></li>
-      <li>Gym Training <button onclick="alert('Registered for Gym Training!')">Join</button></li>
-    </ul>
-  </section>
-</main>
+    <section>
+      <h2>Register for a Fitness Class</h2>
+      <div class="signup-form">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" placeholder="Your name" />
 
-<footer>
-  &copy; 2025 DailyFit. Stay fit, stay healthy.
-</footer>
+        <label for="email">Email Address:</label>
+        <input type="text" id="email" placeholder="you@example.com" />
 
-<script>
-  function calculateBMI() {
-    const weight = parseFloat(document.getElementById('weight').value);
-    const heightCm = parseFloat(document.getElementById('height').value);
-    if (!weight || !heightCm || weight <= 0 || heightCm <= 0) {
-      document.getElementById('bmi-result').textContent = 'Please enter valid weight and height.';
-      document.getElementById('bmi-result').style.color = 'var(--color-error)';
-      return;
+        <label for="class">Select Class:</label>
+        <select id="class">
+          <option>Yoga</option>
+          <option>Zumba</option>
+          <option>Pilates</option>
+          <option>Gym Training</option>
+        </select>
+
+        <button onclick="submitRegistration()">Submit Registration</button>
+        <div class="result" id="register-result"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 DailyFit. Energize your body. Empower your life.
+  </footer>
+
+  <script>
+    function calculateBMI() {
+      const weight = parseFloat(document.getElementById('bmi-weight').value);
+      const height = parseFloat(document.getElementById('bmi-height').value) / 100;
+      if (!weight || !height) {
+        document.getElementById('bmi-result').textContent = 'Please enter valid inputs.';
+        return;
+      }
+      const bmi = weight / (height * height);
+      let status = '';
+      if (bmi < 18.5) status = 'Underweight';
+      else if (bmi < 25) status = 'Normal';
+      else if (bmi < 30) status = 'Overweight';
+      else status = 'Obese';
+      document.getElementById('bmi-result').textContent = `Your BMI: ${bmi.toFixed(1)} (${status})`;
     }
-    const heightM = heightCm / 100;
-    const bmi = weight / (heightM * heightM);
-    let category = '';
-    if (bmi < 18.5) category = 'Underweight';
-    else if (bmi < 24.9) category = 'Normal';
-    else if (bmi < 29.9) category = 'Overweight';
-    else category = 'Obese';
-    document.getElementById('bmi-result').textContent = `Your BMI is ${bmi.toFixed(1)} (${category})`;
-    document.getElementById('bmi-result').style.color = 'var(--color-primary)';
-  }
 
-  function calculateWaterIntake() {
-    const weight = parseFloat(document.getElementById('weight-water').value);
-    if (!weight || weight <= 0) {
-      document.getElementById('water-result').textContent = 'Please enter valid weight.';
-      document.getElementById('water-result').style.color = 'var(--color-error)';
-      return;
+    function calculateWater() {
+      const weight = parseFloat(document.getElementById('water-weight').value);
+      if (!weight) {
+        document.getElementById('water-result').textContent = 'Please enter your weight.';
+        return;
+      }
+      const liters = (weight * 35) / 1000;
+      document.getElementById('water-result').textContent = `Recommended water intake: ${liters.toFixed(2)} L/day`;
     }
-    const waterL = (weight * 35) / 1000;
-    document.getElementById('water-result').textContent = `Recommended: ${waterL.toFixed(2)} liters/day`;
-    document.getElementById('water-result').style.color = 'var(--color-primary)';
-  }
 
-  function checkStepsGoal() {
-    const steps = parseInt(document.getElementById('steps').value);
-    if (isNaN(steps) || steps < 0) {
-      document.getElementById('steps-result').textContent = 'Please enter valid steps.';
-      document.getElementById('steps-result').style.color = 'var(--color-error)';
-      return;
+    function checkSteps() {
+      const steps = parseInt(document.getElementById('steps').value);
+      if (isNaN(steps)) {
+        document.getElementById('steps-result').textContent = 'Please enter step count.';
+        return;
+      }
+      const diff = 10000 - steps;
+      if (steps >= 10000)
+        document.getElementById('steps-result').textContent = `Awesome! Goal reached! 🎉`;
+      else
+        document.getElementById('steps-result').textContent = `Keep going! ${diff} steps to reach 10,000.`;
     }
-    const goal = 10000;
-    if (steps >= goal) {
-      document.getElementById('steps-result').textContent = `Great job! You've reached your goal 🎉`;
-      document.getElementById('steps-result').style.color = 'var(--color-primary)';
-    } else {
-      document.getElementById('steps-result').textContent = `You need ${goal - steps} more steps today.`;
-      document.getElementById('steps-result').style.color = 'var(--color-secondary)';
-    }
-  }
-</script>
 
+    function submitRegistration() {
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const selectedClass = document.getElementById('class').value;
+      if (!name || !email) {
+        document.getElementById('register-result').textContent = 'Please fill out all fields.';
+        return;
+      }
+      document.getElementById('register-result').textContent = `Thanks ${name}, you’ve registered for ${selectedClass}! 🎉`;
+    }
+  </script>
 </body>
 </html>
