@@ -5,43 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>DailyFit - Health & Fitness Tracker</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.ico" />
 </head>
 <body>
   <header>DailyFit - Stay Fit, Stay Healthy</header>
 
   <main>
-    <section class="bmi-section">
+    <section>
       <h2>Body Mass Index (BMI)</h2>
       <label for="bmi-weight">Weight (kg):</label>
-      <input type="number" id="bmi-weight" placeholder="e.g. 70" />
+      <input type="number" id="bmi-weight" />
       <label for="bmi-height">Height (cm):</label>
-      <input type="number" id="bmi-height" placeholder="e.g. 170" />
-      <button id="bmi-btn">Calculate BMI</button>
+      <input type="number" id="bmi-height" />
+      <button onclick="calculateBMI()">Calculate BMI</button>
       <div class="result" id="bmi-result"></div>
       <div class="tips">💡 Keep your BMI in check for long-term health.</div>
     </section>
 
-    <section class="water-section">
+    <section>
       <h2>Daily Water Intake</h2>
       <label for="water-weight">Weight (kg):</label>
-      <input type="number" id="water-weight" placeholder="e.g. 70" />
-      <button id="water-btn">Calculate Water Needs</button>
+      <input type="number" id="water-weight" />
+      <button onclick="calculateWater()">Calculate Water Needs</button>
       <div class="result" id="water-result"></div>
       <div class="tips">💧 Staying hydrated improves focus and energy.</div>
     </section>
 
-    <section class="steps-section">
+    <section>
       <h2>Step Tracker</h2>
       <label for="steps">Steps Today:</label>
-      <input type="number" id="steps" placeholder="e.g. 8000" />
-      <button id="steps-btn">Check Steps</button>
+      <input type="number" id="steps" />
+      <button onclick="checkSteps()">Check Steps</button>
       <div class="result" id="steps-result"></div>
       <div class="tips">🚶‍♂️ 10,000 steps a day keeps fatigue away.</div>
     </section>
 
-    <section class="classes-info">
+    <section>
       <h2>About Our Classes</h2>
       <div class="class-info">
         <h3>Why Join DailyFit?</h3>
@@ -50,7 +49,7 @@
       </div>
     </section>
 
-    <section class="signup-section">
+    <section>
       <h2>Register for a Fitness Class</h2>
       <div class="signup-form">
         <label for="name">Full Name:</label>
@@ -67,26 +66,26 @@
           <option>Gym Training</option>
         </select>
 
-        <button id="register-btn">Submit Registration</button>
+        <button onclick="submitRegistration()">Submit Registration</button>
         <div class="result" id="register-result"></div>
       </div>
     </section>
 
-    <section class="testimonial-section">
-      <h2>What Our Members Say</h2>
+    <section>
+      <h2>Testimonials</h2>
       <div class="testimonials">
-        <article class="testimonial-card">
-          <p>“Joining DailyFit transformed my lifestyle. The trainers are supportive and classes fun!”</p>
-          <span>- Anna S.</span>
-        </article>
-        <article class="testimonial-card">
-          <p>“I love the variety of classes. Yoga helped me relieve stress and Zumba keeps me energized.”</p>
-          <span>- Michael D.</span>
-        </article>
-        <article class="testimonial-card">
-          <p>“Great community and flexible schedules. It’s easy to stay motivated here.”</p>
-          <span>- Sarah L.</span>
-        </article>
+        <blockquote>
+          <p>"Joining DailyFit was the best decision! The Pilates class improved my posture and strength."</p>
+          <footer>- Sarah W.</footer>
+        </blockquote>
+        <blockquote>
+          <p>"The trainers are supportive and friendly. I love the flexibility of the schedules."</p>
+          <footer>- Michael T.</footer>
+        </blockquote>
+        <blockquote>
+          <p>"Thanks to DailyFit's water and step tracking, I've become more conscious of my health."</p>
+          <footer>- Aisha R.</footer>
+        </blockquote>
       </div>
     </section>
   </main>
@@ -95,6 +94,56 @@
     &copy; 2025 DailyFit. Energize your body. Empower your life.
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    function calculateBMI() {
+      const weight = parseFloat(document.getElementById('bmi-weight').value);
+      const height = parseFloat(document.getElementById('bmi-height').value) / 100;
+      if (!weight || !height) {
+        document.getElementById('bmi-result').textContent = 'Please enter valid inputs.';
+        return;
+      }
+      const bmi = weight / (height * height);
+      let status = '';
+      if (bmi < 18.5) status = 'Underweight';
+      else if (bmi < 25) status = 'Normal';
+      else if (bmi < 30) status = 'Overweight';
+      else status = 'Obese';
+      document.getElementById('bmi-result').textContent = `Your BMI: ${bmi.toFixed(1)} (${status})`;
+    }
+
+    function calculateWater() {
+      const weight = parseFloat(document.getElementById('water-weight').value);
+      if (!weight) {
+        document.getElementById('water-result').textContent = 'Please enter your weight.';
+        return;
+      }
+      const liters = (weight * 35) / 1000;
+      document.getElementById('water-result').textContent = `Recommended water intake: ${liters.toFixed(2)} L/day`;
+    }
+
+    function checkSteps() {
+      const steps = parseInt(document.getElementById('steps').value);
+      if (isNaN(steps)) {
+        document.getElementById('steps-result').textContent = 'Please enter step count.';
+        return;
+      }
+      const diff = 10000 - steps;
+      if (steps >= 10000)
+        document.getElementById('steps-result').textContent = `Awesome! Goal reached! 🎉`;
+      else
+        document.getElementById('steps-result').textContent = `Keep going! ${diff} steps to reach 10,000.`;
+    }
+
+    function submitRegistration() {
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const selectedClass = document.getElementById('class').value;
+      if (!name || !email) {
+        document.getElementById('register-result').textContent = 'Please fill out all fields.';
+        return;
+      }
+      document.getElementById('register-result').textContent = `Thanks ${name}, you’ve registered for ${selectedClass}! 🎉`;
+    }
+  </script>
 </body>
 </html>
