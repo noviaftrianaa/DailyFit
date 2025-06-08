@@ -5,15 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>DailyFit - Health & Fitness Tracker</title>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
   :root {
     --color-primary: #2196f3;      /* Biru cerah */
     --color-secondary: #1565c0;    /* Biru tua */
     --color-error: #e53935;        /* Merah error */
-    --color-bg: #f0f4ff;           /* Biru sangat terang */
+    --color-bg: #e8f0fe;           /* Biru sangat terang */
     --color-text: #0d1a26;         /* Biru gelap untuk teks */
     --color-light: #ffffff;        /* Putih */
-    --color-dark-bg: #0b1724;      /* Biru gelap mode gelap */
-    --color-dark-text: #cfd8fc;    /* Biru muda terang mode gelap */
+    --color-accent: #64b5f6;       /* Biru aksen */
   }
 
   * {
@@ -22,86 +23,152 @@
 
   body {
     margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', sans-serif;
     background-color: var(--color-bg);
     color: var(--color-text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
   }
 
   header {
     background-color: var(--color-primary);
     color: var(--color-light);
-    padding: 1rem 2rem;
+    padding: 1.5rem 2rem;
     text-align: center;
-    font-size: 1.8rem;
+    font-size: 2.2rem;
     font-weight: 700;
+    box-shadow: 0 3px 10px rgba(33, 150, 243, 0.4);
   }
 
   main {
-    max-width: 600px;
+    flex-grow: 1;
+    max-width: 700px;
     margin: 2rem auto;
-    padding: 0 1rem;
+    padding: 0 1rem 3rem;
+    width: 100%;
   }
 
   h2 {
     color: var(--color-primary);
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
     text-align: center;
   }
 
   .section {
-    background: white;
-    border-radius: 8px;
-    padding: 1.5rem;
-    margin-bottom: 2rem;
-    box-shadow: 0 2px 8px rgba(33, 150, 243, 0.15);
+    background: var(--color-light);
+    border-radius: 15px;
+    padding: 2rem 2.5rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 10px 25px rgba(33, 150, 243, 0.15);
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .section:hover {
+    box-shadow: 0 15px 40px rgba(33, 150, 243, 0.3);
   }
 
   label {
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.6rem;
     font-weight: 600;
+    font-size: 1rem;
   }
 
-  input[type="number"],
-  input[type="text"] {
+  input[type="number"] {
     width: 100%;
-    padding: 0.5rem;
-    font-size: 1rem;
-    margin-bottom: 1rem;
-    border: 1px solid #bbb;
-    border-radius: 5px;
+    padding: 0.65rem 1rem;
+    font-size: 1.05rem;
+    margin-bottom: 1.4rem;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    transition: border-color 0.3s ease;
+  }
+
+  input[type="number"]:focus {
+    border-color: var(--color-primary);
+    outline: none;
   }
 
   button {
     background-color: var(--color-primary);
     color: var(--color-light);
     border: none;
-    padding: 0.7rem 1.2rem;
-    font-size: 1rem;
-    border-radius: 5px;
+    padding: 0.85rem 1.5rem;
+    font-size: 1.1rem;
+    border-radius: 25px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-weight: 600;
+    font-weight: 700;
     width: 100%;
+    box-shadow: 0 5px 15px rgba(33, 150, 243, 0.3);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    user-select: none;
   }
 
   button:hover {
     background-color: var(--color-secondary);
+    box-shadow: 0 8px 20px rgba(21, 101, 192, 0.5);
   }
 
   .result {
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     font-weight: 700;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     text-align: center;
+    min-height: 40px;
+    color: var(--color-primary);
+    opacity: 0;
+    animation: fadeIn 0.7s forwards;
+  }
+
+  .result.error {
+    color: var(--color-error);
+  }
+
+  /* Animasi fadeIn */
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Gambar ilustrasi di setiap section */
+  .section svg {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 100px;
+    height: 100px;
+    opacity: 0.1;
+    pointer-events: none;
   }
 
   /* Footer */
   footer {
     text-align: center;
-    padding: 1rem;
+    padding: 1rem 0;
     font-size: 0.9rem;
     color: #555;
+    background: #f7f9ff;
+    border-top: 1px solid #ddd;
+    margin-top: auto;
+  }
+
+  /* Responsive */
+  @media (max-width: 480px) {
+    .section {
+      padding: 1.5rem 1.5rem;
+    }
+
+    .section svg {
+      width: 70px;
+      height: 70px;
+      top: 0.5rem;
+      right: 0.5rem;
+    }
   }
 
 </style>
@@ -112,30 +179,45 @@
 
 <main>
 
-  <section class="section" id="bmi-section">
+  <section class="section" id="bmi-section" aria-label="Body Mass Index Calculator">
     <h2>Body Mass Index (BMI) Calculator</h2>
     <label for="weight">Weight (kg):</label>
-    <input type="number" id="weight" min="1" placeholder="e.g., 70" />
+    <input type="number" id="weight" min="1" placeholder="e.g., 70" aria-describedby="weightHelp" />
     <label for="height">Height (cm):</label>
-    <input type="number" id="height" min="1" placeholder="e.g., 170" />
-    <button onclick="calculateBMI()">Calculate BMI</button>
-    <div class="result" id="bmi-result"></div>
+    <input type="number" id="height" min="1" placeholder="e.g., 170" aria-describedby="heightHelp" />
+    <button onclick="calculateBMI()" aria-label="Calculate BMI">Calculate BMI</button>
+    <div class="result" id="bmi-result" role="alert" aria-live="polite"></div>
+    <!-- Ilustrasi SVG -->
+    <svg viewBox="0 0 64 64" fill="none" aria-hidden="true" >
+      <circle cx="32" cy="32" r="30" stroke="var(--color-primary)" stroke-width="3"/>
+      <path d="M20 44l12-24 12 24H20z" fill="var(--color-primary)" fill-opacity="0.2"/>
+    </svg>
   </section>
 
-  <section class="section" id="water-section">
+  <section class="section" id="water-section" aria-label="Daily Water Intake Recommendation">
     <h2>Daily Water Intake Recommendation</h2>
     <label for="weight-water">Weight (kg):</label>
-    <input type="number" id="weight-water" min="1" placeholder="e.g., 70" />
-    <button onclick="calculateWaterIntake()">Calculate Water Intake</button>
-    <div class="result" id="water-result"></div>
+    <input type="number" id="weight-water" min="1" placeholder="e.g., 70" aria-describedby="waterWeightHelp" />
+    <button onclick="calculateWaterIntake()" aria-label="Calculate Water Intake">Calculate Water Intake</button>
+    <div class="result" id="water-result" role="alert" aria-live="polite"></div>
+    <!-- Ilustrasi SVG -->
+    <svg viewBox="0 0 64 64" fill="none" aria-hidden="true" >
+      <path d="M32 2C20 20 16 40 32 62c16-22 12-42 0-60z" fill="var(--color-primary)" fill-opacity="0.15"/>
+      <circle cx="32" cy="32" r="14" stroke="var(--color-primary)" stroke-width="3" />
+    </svg>
   </section>
 
-  <section class="section" id="steps-section">
+  <section class="section" id="steps-section" aria-label="Step Tracker Goal">
     <h2>Step Tracker Goal</h2>
     <label for="steps">Enter Your Steps Today:</label>
-    <input type="number" id="steps" min="0" placeholder="e.g., 5000" />
-    <button onclick="checkStepsGoal()">Check Goal</button>
-    <div class="result" id="steps-result"></div>
+    <input type="number" id="steps" min="0" placeholder="e.g., 5000" aria-describedby="stepsHelp" />
+    <button onclick="checkStepsGoal()" aria-label="Check Steps Goal">Check Goal</button>
+    <div class="result" id="steps-result" role="alert" aria-live="polite"></div>
+    <!-- Ilustrasi SVG -->
+    <svg viewBox="0 0 64 64" fill="none" aria-hidden="true" >
+      <circle cx="32" cy="32" r="30" stroke="var(--color-primary)" stroke-width="3"/>
+      <path d="M22 38h20M28 44h8" stroke="var(--color-primary)" stroke-width="3" stroke-linecap="round"/>
+    </svg>
   </section>
 
 </main>
@@ -148,10 +230,11 @@
   function calculateBMI() {
     const weight = parseFloat(document.getElementById('weight').value);
     const heightCm = parseFloat(document.getElementById('height').value);
+    const resultEl = document.getElementById('bmi-result');
 
     if (!weight || !heightCm || weight <= 0 || heightCm <= 0) {
-      document.getElementById('bmi-result').textContent = 'Please enter valid weight and height.';
-      document.getElementById('bmi-result').style.color = 'var(--color-error)';
+      resultEl.textContent = 'Please enter valid weight and height.';
+      resultEl.classList.add('error');
       return;
     }
 
@@ -164,45 +247,46 @@
     else if (bmi < 29.9) category = 'Overweight';
     else category = 'Obese';
 
-    document.getElementById('bmi-result').textContent = `Your BMI is ${bmi.toFixed(1)} (${category}).`;
-    document.getElementById('bmi-result').style.color = 'var(--color-primary)';
+    resultEl.textContent = `Your BMI is ${bmi.toFixed(1)} (${category}).`;
+    resultEl.classList.remove('error');
   }
 
   function calculateWaterIntake() {
     const weight = parseFloat(document.getElementById('weight-water').value);
+    const resultEl = document.getElementById('water-result');
 
     if (!weight || weight <= 0) {
-      document.getElementById('water-result').textContent = 'Please enter valid weight.';
-      document.getElementById('water-result').style.color = 'var(--color-error)';
+      resultEl.textContent = 'Please enter valid weight.';
+      resultEl.classList.add('error');
       return;
     }
 
-    // Rekomendasi air: 35 ml per kg berat badan
     const waterMl = weight * 35;
     const waterL = waterMl / 1000;
 
-    document.getElementById('water-result').textContent = `You should drink about ${waterL.toFixed(2)} liters of water daily.`;
-    document.getElementById('water-result').style.color = 'var(--color-primary)';
+    resultEl.textContent = `You should drink about ${waterL.toFixed(2)} liters of water daily.`;
+    resultEl.classList.remove('error');
   }
 
   function checkStepsGoal() {
     const steps = parseInt(document.getElementById('steps').value);
+    const resultEl = document.getElementById('steps-result');
 
     if (isNaN(steps) || steps < 0) {
-      document.getElementById('steps-result').textContent = 'Please enter a valid number of steps.';
-      document.getElementById('steps-result').style.color = 'var(--color-error)';
+      resultEl.textContent = 'Please enter a valid number of steps.';
+      resultEl.classList.add('error');
       return;
     }
 
-    const goal = 10000; // Langkah ideal per hari
+    const goal = 10000;
 
     if (steps >= goal) {
-      document.getElementById('steps-result').textContent = `Great job! You've reached your daily goal of ${goal} steps. 🎉`;
-      document.getElementById('steps-result').style.color = 'var(--color-primary)';
+      resultEl.textContent = `Great job! You've reached your daily goal of ${goal} steps. 🎉`;
+      resultEl.classList.remove('error');
     } else {
       const remaining = goal - steps;
-      document.getElementById('steps-result').textContent = `You need ${remaining} more steps to reach your daily goal of ${goal}. Keep going!`;
-      document.getElementById('steps-result').style.color = 'var(--color-secondary)';
+      resultEl.textContent = `You need ${remaining} more steps to reach your daily goal of ${goal}. Keep going!`;
+      resultEl.classList.remove('error');
     }
   }
 </script>
