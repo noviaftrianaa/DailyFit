@@ -1,0 +1,147 @@
+:root {
+  --primary: #6d4c41; /* cokelat tua */
+  --secondary: #d7ccc8; /* cream cokelat */
+  --accent: #a1887f; /* cokelat medium */
+  --bg: #f5f1ea; /* cream terang */
+  --text: #3e2723; /* cokelat gelap */
+  --white: #fff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: url('https://images.unsplash.com/photo-1554284126-90d4e5b81bb2?auto=format&fit=crop&w=1400&q=80') no-repeat center center fixed;
+  background-size: cover;
+  color: var(--text);
+}
+
+header {
+  background-color: rgba(109, 76, 65, 0.9);
+  color: var(--white);
+  padding: 1.5rem 2rem;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  backdrop-filter: blur(6px);
+}
+
+main {
+  max-width: 850px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: var(--bg);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(109, 76, 65, 0.15);
+}
+
+h2 {
+  color: var(--primary);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+section {
+  margin-bottom: 2rem;
+}
+
+label {
+  display: block;
+  margin: 0.5rem 0 0.3rem;
+  font-weight: 600;
+}
+
+input, select {
+  width: 100%;
+  padding: 0.6rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--secondary);
+  border-radius: 6px;
+  font-size: 1rem;
+  color: var(--text);
+  background-color: var(--white);
+}
+
+button {
+  background-color: var(--primary);
+  color: var(--white);
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 100%;
+}
+
+button:hover {
+  background-color: var(--accent);
+}
+
+.result {
+  font-weight: bold;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.tips {
+  font-size: 0.95rem;
+  font-style: italic;
+  color: #5d4037;
+  margin-top: 0.5rem;
+}
+
+.class-info {
+  background-color: var(--secondary);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  color: var(--text);
+}
+
+.class-info h3 {
+  margin-top: 0;
+  color: var(--primary);
+}
+
+.signup-form {
+  background-color: #ede7f6;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: rgba(109, 76, 65, 0.9);
+  color: var(--white);
+  margin-top: 2rem;
+}
+
+/* Testimonial Section */
+
+.testimonials {
+  background-color: var(--bg);
+  border: 1px solid var(--secondary);
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 4px 8px rgba(109, 76, 65, 0.2);
+}
+
+.testimonial {
+  margin-bottom: 1.2rem;
+  font-style: italic;
+  color: #5d4037;
+}
+
+.testimonial strong {
+  display: block;
+  text-align: right;
+  margin-top: 0.4rem;
+  font-weight: 700;
+  color: var(--text);
+}
