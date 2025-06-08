@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DailyFit - Health & Fitness Tracker</title>
+<style>
+  :root {
+    --color-primary: #2196f3;      /* Biru cerah */
+    --color-secondary: #1565c0;    /* Biru tua */
+    --color-error: #e53935;        /* Merah error */
+    --color-bg: #f0f4ff;           /* Biru sangat terang */
+    --color-text: #0d1a26;         /* Biru gelap untuk teks */
+    --color-light: #ffffff;        /* Putih */
+    --color-dark-bg: #0b1724;      /* Biru gelap mode gelap */
+    --color-dark-text: #cfd8fc;    /* Biru muda terang mode gelap */
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+  }
+
+  header {
+    background-color: var(--color-primary);
+    color: var(--color-light);
+    padding: 1rem 2rem;
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+
+  main {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+
+  h2 {
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .section {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(33, 150, 243, 0.15);
+  }
+
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+
+  input[type="number"],
+  input[type="text"] {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+  }
+
+  button {
+    background-color: var(--color-primary);
+    color: var(--color-light);
+    border: none;
+    padding: 0.7rem 1.2rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: 600;
+    width: 100%;
+  }
+
+  button:hover {
+    background-color: var(--color-secondary);
+  }
+
+  .result {
+    margin-top: 1rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+    color: #555;
+  }
+
+</style>
+</head>
+<body>
+
+<header>DailyFit</header>
+
+<main>
+
+  <section class="section" id="bmi-section">
+    <h2>Body Mass Index (BMI) Calculator</h2>
+    <label for="weight">Weight (kg):</label>
+    <input type="number" id="weight" min="1" placeholder="e.g., 70" />
+    <label for="height">Height (cm):</label>
+    <input type="number" id="height" min="1" placeholder="e.g., 170" />
+    <button onclick="calculateBMI()">Calculate BMI</button>
+    <div class="result" id="bmi-result"></div>
+  </section>
+
+  <section class="section" id="water-section">
+    <h2>Daily Water Intake Recommendation</h2>
+    <label for="weight-water">Weight (kg):</label>
+    <input type="number" id="weight-water" min="1" placeholder="e.g., 70" />
+    <button onclick="calculateWaterIntake()">Calculate Water Intake</button>
+    <div class="result" id="water-result"></div>
+  </section>
+
+  <section class="section" id="steps-section">
+    <h2>Step Tracker Goal</h2>
+    <label for="steps">Enter Your Steps Today:</label>
+    <input type="number" id="steps" min="0" placeholder="e.g., 5000" />
+    <button onclick="checkStepsGoal()">Check Goal</button>
+    <div class="result" id="steps-result"></div>
+  </section>
+
+</main>
+
+<footer>
+  &copy; 2025 DailyFit. All rights reserved.
+</footer>
+
+<script>
+  function calculateBMI() {
+    const weight = parseFloat(document.getElementById('weight').value);
+    const heightCm = parseFloat(document.getElementById('height').value);
+
+    if (!weight || !heightCm || weight <= 0 || heightCm <= 0) {
+      document.getElementById('bmi-result').textContent = 'Please enter valid weight and height.';
+      document.getElementById('bmi-result').style.color = 'var(--color-error)';
+      return;
+    }
+
+    const heightM = heightCm / 100;
+    const bmi = weight / (heightM * heightM);
+    let category = '';
+
+    if (bmi < 18.5) category = 'Underweight';
+    else if (bmi < 24.9) category = 'Normal weight';
+    else if (bmi < 29.9) category = 'Overweight';
+    else category = 'Obese';
+
+    document.getElementById('bmi-result').textContent = `Your BMI is ${bmi.toFixed(1)} (${category}).`;
+    document.getElementById('bmi-result').style.color = 'var(--color-primary)';
+  }
+
+  function calculateWaterIntake() {
+    const weight = parseFloat(document.getElementById('weight-water').value);
+
+    if (!weight || weight <= 0) {
+      document.getElementById('water-result').textContent = 'Please enter valid weight.';
+      document.getElementById('water-result').style.color = 'var(--color-error)';
+      return;
+    }
+
+    // Rekomendasi air: 35 ml per kg berat badan
+    const waterMl = weight * 35;
+    const waterL = waterMl / 1000;
+
+    document.getElementById('water-result').textContent = `You should drink about ${waterL.toFixed(2)} liters of water daily.`;
+    document.getElementById('water-result').style.color = 'var(--color-primary)';
+  }
+
+  function checkStepsGoal() {
+    const steps = parseInt(document.getElementById('steps').value);
+
+    if (isNaN(steps) || steps < 0) {
+      document.getElementById('steps-result').textContent = 'Please enter a valid number of steps.';
+      document.getElementById('steps-result').style.color = 'var(--color-error)';
+      return;
+    }
+
+    const goal = 10000; // Langkah ideal per hari
+
+    if (steps >= goal) {
+      document.getElementById('steps-result').textContent = `Great job! You've reached your daily goal of ${goal} steps. 🎉`;
+      document.getElementById('steps-result').style.color = 'var(--color-primary)';
+    } else {
+      const remaining = goal - steps;
+      document.getElementById('steps-result').textContent = `You need ${remaining} more steps to reach your daily goal of ${goal}. Keep going!`;
+      document.getElementById('steps-result').style.color = 'var(--color-secondary)';
+    }
+  }
+</script>
+
+</body>
+</html>
